@@ -1,15 +1,11 @@
-postfix:
-	Tools to synchronize Gandi.net account based on postfix config files
-
-	* syncFwdMails.py
-
+postfix/syncFwdMails.py
 	Updates the Gandi.net « Mail forward » of each domain, based on virtual map file.
 
-	TODO: Manage the deletion.
-	-> catches all aliases from gandi,
-	-> computes virtual database,
-	-> do the comparison of both tables :
-		-> not in gandi, and domain known: create
-		-> not in virtual, and domain known: delete
+	1# catches all aliases from gandi,
+	2# computes virtual database,
+	3# processes the entries:
+		-> domain unknown : skip
+		-> not in gandi   : create
+		-> not in virtual : delete
 		-> in both, and != values : update
 		else do nothing.
