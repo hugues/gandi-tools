@@ -37,7 +37,7 @@ for line in open('/etc/postfix/virtual', 'ro'):
 DELETE=set.difference(set(gandi), set(virtual))
 CREATE=set.difference(set(virtual), set(gandi))
 
-for email in set.union(set(gandi), set(virtual)):
+for email in sorted(set.union(set(gandi), set(virtual))):
 	alias, domain=email.split('@')
 	if domain not in domains:
 		print "[ ERROR ] " + email + ": «" + domain + "» not managed."
